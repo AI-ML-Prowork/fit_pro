@@ -1,0 +1,6 @@
+psycopg2-binary
+Django
+djangorestframework
+dj-database-url
+python-decouple
+python-dotenv
