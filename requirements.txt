@@ -1,5 +1,5 @@
 psycopg2-binary
-Django-5.0.1
+Django
 djangorestframework
 dj-database-url
 python-decouple
