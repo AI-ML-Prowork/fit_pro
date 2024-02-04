@@ -1,0 +1,25 @@
+{% extends "home.html" %}
+
+{% block content %}
+    <h2>Add Reward</h2>
+
+
+    <form method="post" action="{% url 'user_panel:add_reward' %}">
+        {% csrf_token %}
+    
+        <label for="steps_count">Steps Count:</label>
+        <input type="number" id="steps_count" name="steps_count" required>
+    
+        <label for="calories_burn">Calories Burn:</label>
+        <input type="number" id="calories_burn" name="calories_burn" required>
+    
+        <label for="rewards">Rewards:</label>
+        <input type="text" id="rewards" name="rewards" required>
+    
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+    
+        <button type="submit">Submit</button>
+      </form>
+
+{% endblock %}

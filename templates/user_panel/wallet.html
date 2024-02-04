@@ -1,0 +1,29 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <h2>wallet </h2>
+    <h8>Add Money</h8> 
+    
+
+
+    <form method="post" action="{% url 'user_panel:add_wallet_transaction' %}" class="mt-3">
+      {% csrf_token %}
+  
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount:</label>
+        <input type="text" id="amount" name="amount" class="form-control" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="payment_mode" class="form-label">Payment Mode:</label>
+        <select id="payment_mode" name="payment_mode" class="form-select" required>
+          <option value="debit_card">Debit Card</option>
+          <option value="credit_card">Credit Card</option>
+          <option value="upi">UPI</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Add Transaction</button>
+    </form>
+
+{% endblock %}

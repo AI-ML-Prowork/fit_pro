@@ -7,9 +7,12 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 import os
 
+def base(request):
+    return render(request, 'admin_panel/base.html')
+from django.shortcuts import render, redirect
+from .models import Product
 
-
-
+#___________USING FORMS _____________________
 # from django.shortcuts import render
 # from .forms import ProductForm
 
@@ -24,16 +27,13 @@ import os
 #     return render(request, 'admin_panel/add_product.html', {'form': form})
 
 
-from django.shortcuts import render, redirect
-from .models import Product
-
+#_____________USING TEMPLATES_______________________
 def add_product(request):
     if request.method == 'POST':
         product_name = request.POST.get('product_name')
         price = request.POST.get('price')
         quantity = request.POST.get('quantity')
 
-        # Perform any additional validation if needed
 
         Product.objects.create(
             product_name=product_name,
