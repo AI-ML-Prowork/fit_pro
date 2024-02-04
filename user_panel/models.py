@@ -38,3 +38,20 @@ class Wallet(models.Model):
 
     def __str__(self):
         return f"Amount: {self.amount} - Payment Mode: {self.get_payment_mode_display()} - Date: {self.date}"
+    
+
+
+import uuid # ----for unique id generation
+
+class Add_Order(models.Model):
+    order_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    item_name = models.CharField(max_length=255)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    steps_count = models.PositiveIntegerField()
+    calories_burn = models.PositiveIntegerField()
+    rewards = models.CharField(max_length=255)
+    date_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Order {self.order_id} - {self.item_name} - {self.user.username}"

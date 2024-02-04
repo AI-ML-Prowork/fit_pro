@@ -91,3 +91,40 @@ def add_wallet_transaction(request):
         )
 
     return render(request, 'user_panel/wallet.html')
+
+def wallet_history(request):
+    transactions = Wallet.objects.all().order_by('-date')
+    return render(request, 'user_panel/wallet_history.html', {'transactions': transactions})
+
+
+
+from user_panel.models import Add_Order
+
+def add_order(request):
+    if request.method == 'POST':
+        item_name = request.POST.get('item_name')
+        amount = request.POST.get('amount')
+        user_id = request.POST.get('user')  # Assuming user_id is submitted as part of the form
+        user = User.objects.get(pk=user_id)
+        steps_count = request.POST.get('steps_count')
+        calories_burn = request.POST.get('calories_burn')
+        rewards = request.POST.get('rewards')
+
+        Add_Order.objects.create(
+            item_name=item_name,
+            amount=amount,
+            user=user,
+            steps_count=steps_count,
+            calories_burn=calories_burn,
+            rewards=rewards
+        )
+
+        return redirect('/')  
+    else:
+
+        users = User.objects.all()
+        return render(request, 'user_panel/add_order.html', {'users': users})
+
+def orders_history(request):
+    orders = Add_Order.objects.all()
+    return render(request, 'user_panel/orders_history.html', {'orders': orders})

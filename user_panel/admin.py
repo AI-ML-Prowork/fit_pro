@@ -23,3 +23,11 @@ class wallet(admin.ModelAdmin):
     list_display = ('amount', 'payment_mode', 'date')
 
 admin.site.register(Wallet, wallet)
+
+
+from user_panel.models import Add_Order
+
+class order(admin.ModelAdmin):
+    list_display = ('order_id', 'item_name', 'amount', 'user', 'steps_count', 'calories_burn', 'rewards', 'date_time')
+
+admin.site.register(Add_Order, order)
