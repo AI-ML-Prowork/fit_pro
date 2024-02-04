@@ -8,9 +8,31 @@ from django.contrib.auth.models import User
 import os
 
 def base(request):
-    return render(request, 'admin_panel/base.html')
+    return render(request, 'base.html')
+
+
+from user_panel.models import Add_reward
+from user_panel.models import Add_Order
+from admin_panel.models import Add_Product
+
+def dashboard(request):
+    total_users = User.objects.count()
+    total_rewards = Add_reward.objects.count()
+    total_products = Add_Product.objects.count()
+    total_orders = Add_Order.objects.count()
+
+    context = {
+        'total_users': total_users,
+        'total_rewards': total_rewards,
+        'total_products': total_products,
+        'total_orders': total_orders,
+    }
+
+    return render(request, 'admin_panel/dashboard.html', context)
+
+
 from django.shortcuts import render, redirect
-from .models import Product
+from .models import Add_Product
 
 #___________USING FORMS _____________________
 # from django.shortcuts import render
@@ -29,21 +51,45 @@ from .models import Product
 
 #_____________USING TEMPLATES_______________________
 def add_product(request):
+    SIZE_CHOICES = Add_Product.SIZE_CHOICES
+    MATERIAL_CHOICES = Add_Product.MATERIAL_CHOICES
+    SUITABLE_FOR_CHOICES = Add_Product.SUITABLE_FOR_CHOICES
+    PATTERN_CHOICES = Add_Product.PATTERN_CHOICES
+
     if request.method == 'POST':
         product_name = request.POST.get('product_name')
+        description = request.POST.get('description')
         price = request.POST.get('price')
         quantity = request.POST.get('quantity')
+        size = request.POST.get('size')
+        colour = request.POST.get('colour')
+        material = request.POST.get('material')
+        suitable_for = request.POST.get('suitable_for')
+        pattern = request.POST.get('pattern')
 
-
-        Product.objects.create(
+        Add_Product.objects.create(
             product_name=product_name,
+            description=description,
             price=price,
-            quantity=quantity
+            quantity=quantity,
+            size=size,
+            colour=colour,
+            material=material,
+            suitable_for=suitable_for,
+            pattern=pattern
         )
-    return render(request, 'admin_panel/add_product.html')
+        return redirect('admin_panel:product_list')
+
+    else:
+        return render(request, 'admin_panel/add_product.html', {
+            'SIZE_CHOICES': SIZE_CHOICES,
+            'MATERIAL_CHOICES': MATERIAL_CHOICES,
+            'SUITABLE_FOR_CHOICES': SUITABLE_FOR_CHOICES,
+            'PATTERN_CHOICES': PATTERN_CHOICES,
+        })
 
 
 
 def product_list(request):
-    products = Product.objects.all()
+    products = Add_Product.objects.all()
     return render(request, 'admin_panel/product_list.html', {'products': products})

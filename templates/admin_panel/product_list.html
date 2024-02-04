@@ -17,26 +17,37 @@ th, td {
 th {
     background-color: #f2f2f2;
 }</style>
-<body>
+
     <h2>Product List</h2>
-    <table border="1">
+    <table>
         <thead>
-            <tr>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-            </tr>
+          <tr>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Size</th>
+            <th>Colour</th>
+            <th>Material</th>
+            <th>Suitable For</th>
+            <th>Pattern</th>
+          </tr>
         </thead>
         <tbody>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.product_name }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.quantity }}</td>
-                </tr>
-            {% endfor %}
+          {% for product in products %}
+            <tr>
+              <td>{{ product.product_name }}</td>
+              <td>{{ product.description }}</td>
+              <td>{{ product.price }}</td>
+              <td>{{ product.quantity }}</td>
+              <td>{{ product.size }}</td>
+              <td>{{ product.colour }}</td>
+              <td>{{ product.material }}</td>
+              <td>{{ product.suitable_for }}</td>
+              <td>{{ product.pattern }}</td>
+            </tr>
+          {% endfor %}
         </tbody>
-    </table>
-</body>
+      </table>
 
 {% endblock %}
