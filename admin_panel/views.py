@@ -112,3 +112,87 @@ from user_panel.models import UserProfile
 def all_user_profiles(request):
     user_profiles = UserProfile.objects.all()
     return render(request, 'admin_panel/all_user_profiles.html', {'user_profiles': user_profiles})
+
+
+
+
+
+
+
+
+
+
+# API VIEWS.PY
+
+from rest_framework.decorators import api_view
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+
+
+from .serializers import Add_ProductSerializer
+@api_view(['GET'])
+def product_list_api(request):
+    products = Add_Product.objects.all()
+    product_serializer = Add_ProductSerializer(products, many=True)
+
+    return Response({'status': 200, 'payload': product_serializer.data})
+
+
+@api_view(['POST'])
+def add_product_api(request):
+    if request.method == 'POST':
+        serializer3 = Add_ProductSerializer(data=request.data)
+        if serializer3.is_valid():
+            serializer3.save()
+            return Response({'status': 201, 'message': 'Product added successfully'}, status=status.HTTP_201_CREATED)
+        return Response({'status': 400, 'message': 'Invalid data provided'}, status=status.HTTP_400_BAD_REQUEST)
+    
+
+
+# from .serializers import UserProfileSerializer
+# @api_view(['GET'])
+# def user_list_api(request):
+#     users = User.objects.all()
+#     users_serializer = UserSerializer(users, many=True)
+
+#     return Response({'status': 200, 'payload': users_serializer.data})
+
+
+# @api_view(['POST'])
+# def add_user_api(request):
+#     if request.method == 'POST':
+#         serializer4 = UserSerializer(data=request.data)
+#         if serializer4.is_valid():
+#             # Create a new user with secure password handling
+#             user1 = serializer4.save()
+#             user1.set_password(request.data['password'])
+#             user1.save()
+
+#             return Response({'status': 201, 'message': 'User added successfully'}, status=status.HTTP_201_CREATED)
+#         return Response({'status': 400, 'message': 'Invalid data provided', 'errors': serializer4.errors}, status=status.HTTP_400_BAD_REQUEST)
+    
+
+
+
+
+
+
+# from .serializers import Ordered_ProductSerializer
+# @api_view(['GET'])
+# def order_list_api(request):
+#     orders = Ordered_Product.objects.all()
+#     orders_serializer = Ordered_ProductSerializer(orders, many=True)
+
+#     return Response({'status': 200, 'payload': orders_serializer.data})
+
+
+# @api_view(['POST'])
+# def add_order_api(request):
+#     if request.method == 'POST':
+#         serializer1 = Ordered_ProductSerializer(data=request.data)
+#         if serializer1.is_valid():
+#             serializer1.save()
+#             return Response({'status': 201, 'message': 'Order added successfully'}, status=status.HTTP_201_CREATED)
+#         return Response({'status': 400, 'message': 'Invalid data provided'}, status=status.HTTP_400_BAD_REQUEST)
