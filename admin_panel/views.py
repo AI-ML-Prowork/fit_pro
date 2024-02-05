@@ -106,6 +106,6 @@ def all_user_rewards(request):
 
 from user_panel.models import UserProfile
 
-def all_user_profile(request):
-    profiles = UserProfile.objects.all()
-    return render(request, 'admin_panel/user_profile_list.html', {'profiles': profiles})
+def all_user_profiles(request):
+    user_profiles = UserProfile.objects.all()
+    return render(request, 'admin_panel/all_user_profiles.html', {'user_profiles': user_profiles})

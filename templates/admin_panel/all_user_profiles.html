@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>User Profile List</h2>
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark"> 
+    <tr>
+      <th>User Name</th>
+      <th>Age</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>Any Disease</th>
+      <th>Allergies</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user_profile in user_profiles %}
+      <tr>
+        <td>{{ user_profile.user_name }}</td>
+        <td>{{ user_profile.age }}</td>
+        <td>{{ user_profile.height }}</td>
+        <td>{{ user_profile.weight }}</td>
+        <td>{{ user_profile.any_disease }}</td>
+        <td>{{ user_profile.allergies }}</td>
+      </tr>
+    {% endfor %}
+    
+
+  </tbody>
+</table>
+{% endblock %}
