@@ -297,7 +297,7 @@ class rewards_api(APIView):
         
 
     def delete(self, request):
-        id = request.data('id')
+        id = request.data['id']
         rewards = Add_reward.objects.get(id=id)
         rewards.delete()
         return Response({'status': 200, 'message': 'Reward deleted successfully'}, status=status.HTTP_200_OK)
