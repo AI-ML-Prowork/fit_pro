@@ -23,8 +23,8 @@ urlpatterns = [
     # path("profile_list_api", profile_list_api, name='profile_list_api'),
     # path("add_profile_api", add_profile_api, name='add_profile_api'),
 
-    path("order_list_api", order_list_api, name='order_list_api'),
-    path("add_order_api", add_order_api, name='add_order_api'),
+    # path("order_list_api", order_list_api, name='order_list_api'),
+    # path("add_order_api", add_order_api, name='add_order_api'),
 
     # path("wallet_list_api", wallet_list_api, name='wallet_list_api'),
     # path("add_money_to_wallet", add_money_to_wallet, name='add_money_to_wallet'),
