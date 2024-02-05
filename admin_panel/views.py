@@ -1,23 +1,57 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
-from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import logout 
 from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth.models import User
 import os
 
-# def base(request):
-#     return render(request, 'base.html')
 
-def index(request):
-    return render(request, 'index.html')
+
+# def index(request):
+#         return render(request, 'index.html')   
+
+
+def custom_login(request):
+    if request.user.is_authenticated:
+
+        return redirect('admin_panel:dashboard')  # Replace 'admin_panel:dashboard' with your dashboard URL
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Authenticate the user using Django's authentication system
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            # Login successful
+            login(request, user)
+            return redirect('admin_panel:dashboard')  # Replace 'admin_panel:dashboard' with your dashboard URL
+        else:
+            # Login failed
+            messages.error(request, 'Invalid username or password')
+
+    return render(request, 'admin_panel/authenticate/login.html')   
+
+
+@login_required(login_url='admin_panel:login')
+def custom_logout(request):
+    logout(request)
+    return redirect('admin_panel:login')
+
+
+# def index(request):
+#     return render(request, 'index.html')
 
 
 from user_panel.models import Add_reward
 from user_panel.models import Add_Order
 from admin_panel.models import Add_Product
 
+
+@login_required(login_url='admin_panel:login')
 def dashboard(request):
     total_users = User.objects.count()
     total_rewards = Add_reward.objects.count()
@@ -53,6 +87,9 @@ from .models import Add_Product
 
 
 #_____________USING TEMPLATES_______________________
+
+
+@login_required(login_url='admin_panel:login')
 def add_product(request):
     SIZE_CHOICES = Add_Product.SIZE_CHOICES
     MATERIAL_CHOICES = Add_Product.MATERIAL_CHOICES
@@ -92,7 +129,7 @@ def add_product(request):
         })
 
 
-
+@login_required(login_url='admin_panel:login')
 def product_list(request):
     products = Add_Product.objects.all()
     return render(request, 'admin_panel/product_list.html', {'products': products})
@@ -102,6 +139,8 @@ def product_list(request):
 
 from user_panel.models import Add_reward
 
+
+@login_required(login_url='admin_panel:login')
 def all_user_rewards(request):
     rewards = Add_reward.objects.all()
     return render(request, 'admin_panel/rewards_list.html', {'rewards': rewards})
@@ -109,6 +148,8 @@ def all_user_rewards(request):
 
 from user_panel.models import UserProfile
 
+
+@login_required(login_url='admin_panel:login')
 def all_user_profiles(request):
     user_profiles = UserProfile.objects.all()
     return render(request, 'admin_panel/all_user_profiles.html', {'user_profiles': user_profiles})
