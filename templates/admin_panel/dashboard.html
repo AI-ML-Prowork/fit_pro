@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // JavaScript to populate data and create a chart
         var ctx = document.getElementById('dashboardChart').getContext('2d');
@@ -90,7 +90,7 @@
             data: data,
             options: options
         });
-    </script>
+    </script> {% endcomment %}
 
 
 {% endblock %}
