@@ -5,6 +5,7 @@ app_name = 'admin_panel'
 
 urlpatterns = [
     path('', base, name='base'),
+    path('index', index, name='index'),
     path('dashboard', dashboard, name='dashboard'),
     path('add_product', add_product, name='add_product'),
     path('product_list', product_list, name='product_list'),
