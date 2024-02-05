@@ -17,8 +17,8 @@ urlpatterns = [
     path("product_list_api", product_list_api, name='product_list_api'),
     path("add_product_api", add_product_api, name='add_product_api'),
 
-    # path("user_list_api", user_list_api, name='user_list_api'),
-    # path("add_user_api", add_user_api, name='add_user_api'),
+    path("user_list_api", user_list_api, name='user_list_api'),
+    path("add_user_api", add_user_api, name='add_user_api'),
 
     # path("profile_list_api", profile_list_api, name='profile_list_api'),
     # path("add_profile_api", add_profile_api, name='add_profile_api'),

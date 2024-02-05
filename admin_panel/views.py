@@ -151,27 +151,27 @@ def add_product_api(request):
     
 
 
-# from .serializers import UserProfileSerializer
-# @api_view(['GET'])
-# def user_list_api(request):
-#     users = User.objects.all()
-#     users_serializer = UserSerializer(users, many=True)
+from .serializers import UserSerializer
+@api_view(['GET'])
+def user_list_api(request):
+    users = User.objects.all()
+    users_serializer = UserSerializer(users, many=True)
 
-#     return Response({'status': 200, 'payload': users_serializer.data})
+    return Response({'status': 200, 'payload': users_serializer.data})
 
 
-# @api_view(['POST'])
-# def add_user_api(request):
-#     if request.method == 'POST':
-#         serializer4 = UserSerializer(data=request.data)
-#         if serializer4.is_valid():
-#             # Create a new user with secure password handling
-#             user1 = serializer4.save()
-#             user1.set_password(request.data['password'])
-#             user1.save()
+@api_view(['POST'])
+def add_user_api(request):
+    if request.method == 'POST':
+        serializer4 = UserSerializer(data=request.data)
+        if serializer4.is_valid():
+            # Create a new user with secure password handling
+            user1 = serializer4.save()
+            user1.set_password(request.data['password'])
+            user1.save()
 
-#             return Response({'status': 201, 'message': 'User added successfully'}, status=status.HTTP_201_CREATED)
-#         return Response({'status': 400, 'message': 'Invalid data provided', 'errors': serializer4.errors}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'status': 201, 'message': 'User added successfully'}, status=status.HTTP_201_CREATED)
+        return Response({'status': 400, 'message': 'Invalid data provided', 'errors': serializer4.errors}, status=status.HTTP_400_BAD_REQUEST)
     
 
 
