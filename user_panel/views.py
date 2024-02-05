@@ -335,7 +335,7 @@ class orders_api(APIView):
         
 
     def delete(self, request):
-        id= request.GET.get("id")
+        id= request.GET.get["id"]
         orders = Add_Order.objects.get(id=id)
         orders.delete()
         return Response({'status': 200, 'message': 'Order deleted successfully'}, status=status.HTTP_200_OK)
