@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Rewards List</h2>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>User</th>
+          <th>Steps Count</th>
+          <th>Calories Burn</th>          
+          <th>Last Login</th>
+          <th>Age</th>
+          <th>Rewards</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for reward in rewards %}
+          <tr>
+            <td>{{ reward.username }}</td>
+            <td>{{ reward.steps_count }}</td>
+            <td>{{ reward.calories_burn }}</td>           
+            <td>{{ reward.last_login }}</td>
+            <td>{{ reward.age }}</td>
+            <td>{{ reward.rewards }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

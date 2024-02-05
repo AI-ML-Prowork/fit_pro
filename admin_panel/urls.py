@@ -8,5 +8,7 @@ urlpatterns = [
     path('dashboard', dashboard, name='dashboard'),
     path('add_product', add_product, name='add_product'),
     path('product_list', product_list, name='product_list'),
+    path('all_user_rewards', all_user_rewards, name='all_user_rewards'),
+    path('all_user_profile', all_user_profile, name='all_user_profile'),
 
 ]

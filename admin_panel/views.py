@@ -93,3 +93,19 @@ def add_product(request):
 def product_list(request):
     products = Add_Product.objects.all()
     return render(request, 'admin_panel/product_list.html', {'products': products})
+
+
+
+
+from user_panel.models import Add_reward
+
+def all_user_rewards(request):
+    rewards = Add_reward.objects.all()
+    return render(request, 'admin_panel/rewards_list.html', {'rewards': rewards})
+
+
+from user_panel.models import UserProfile
+
+def all_user_profile(request):
+    profiles = UserProfile.objects.all()
+    return render(request, 'admin_panel/user_profile_list.html', {'profiles': profiles})
