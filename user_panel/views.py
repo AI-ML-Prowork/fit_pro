@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect,HttpResponse
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import login
@@ -9,8 +9,7 @@ import os
 
 
 
-
-# Create your views here.
+@login_required(login_url='signin/')
 def home(request):
     return render(request, 'home.html')
 
@@ -70,7 +69,7 @@ def signin(request):
 
 
 from user_panel.models import UserProfile
-
+@login_required(login_url='signin/')
 def add_user_profile(request):
     if request.method == 'POST':
         user_name = request.POST.get('user_name')
@@ -102,7 +101,7 @@ def add_user_profile(request):
 from django.utils import timezone
 from user_panel.models import Add_reward
 
-
+@login_required(login_url='signin/')
 def add_reward(request):
     if request.method == 'POST':
         # Retrieve data from the request
@@ -126,7 +125,7 @@ def add_reward(request):
         return redirect('/')
 
     return render(request, 'user_panel/add_reward.html')
-
+@login_required(login_url='signin/')
 def reward_history(request):
     rewards = Add_reward.objects.filter(username=request.user)
     return render(request, 'user_panel/reward_history.html', {'rewards': rewards})
@@ -135,6 +134,7 @@ def reward_history(request):
 
 from .models import Wallet
 
+@login_required(login_url='signin/')
 def add_wallet_transaction(request):
     if request.method == 'POST':
         amount = request.POST.get('amount')
@@ -155,6 +155,8 @@ def wallet_history(request):
 
 from user_panel.models import Add_Order
 
+
+@login_required(login_url='signin/')
 def add_order(request):
     if request.method == 'POST':
         item_name = request.POST.get('item_name')
@@ -180,12 +182,18 @@ def add_order(request):
         users = User.objects.all()
         return render(request, 'user_panel/add_order.html', {'users': users})
 
+
+@login_required(login_url='signin/')
 def orders_history(request):
     orders = Add_Order.objects.all()
     return render(request, 'user_panel/orders_history.html', {'orders': orders})
 
 
-
+@login_required(login_url='signin/')
+def logout(request):
+    auth_logout(request)
+    messages.success(request, 'Logged out successfully')
+    return redirect('/signin/')
 
 
 
