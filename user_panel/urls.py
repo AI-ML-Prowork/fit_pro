@@ -22,6 +22,10 @@ urlpatterns = [
     path('add_order', add_order, name='add_order'),
     path('orders_history', orders_history, name='orders_history'),
 
-    
+
+
+#______________API VIEW__________________
+    path("order/", orders_api.as_view(), name='order'),
+    path("reward/", rewards_api.as_view(), name='reward'),
 
 ]
