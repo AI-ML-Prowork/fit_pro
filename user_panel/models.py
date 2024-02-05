@@ -54,4 +54,4 @@ class Add_Order(models.Model):
     date_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Order {self.order_id} - {self.item_name} - {self.user.username}"
+        return f"Order {self.order_id} - {self.item_name} - {self.user.username}" 
