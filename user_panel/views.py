@@ -11,7 +11,7 @@ import os
 
 @login_required(login_url='signin/')
 def base(request):
-    return render(request, 'base.html')
+    return render(request, 'user_base.html')
 
 
 
