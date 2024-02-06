@@ -8,7 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitPro | Home</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'user_assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'user_assets/css/add_user_profile.css' %}">
+    <link rel="stylesheet" href="{% static 'user_assets/css/add_reward.css' %}">
+    <link rel="stylesheet" href="{% static 'user_assets/css/add_order.css' %}">
+    <link rel="stylesheet" href="{% static 'user_assets/css/reward_history.css' %}">
+    <link rel="stylesheet" href="{% static 'user_assets/css/orders_history.css' %}">
+    <link rel="stylesheet" href="{% static 'user_assets/css/wallet.css' %}">
+    <link rel="stylesheet" href="{% static 'user_assets/css/wallet_history.css' %}">
+
 </head>
 
 <body>
@@ -115,12 +123,9 @@
                 </div>
 
                 <div class="user">
-                    <img src="{% static 'assets/imgs/customer01.jpg' %}" alt="">
+                    <img src="{% static 'user_assets/imgs/customer01.jpg' %}" alt="">
                 </div>
             </div>
-
-
-
        
                {% block content %}
                
@@ -136,68 +141,10 @@
     </div>
 
     <!-- =========== Scripts =========  -->
-    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'user_assets/js/main.js' %}"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-            <!-- ======================= Cards ================== -->
-            {% comment %} <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Views</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">284</div>
-                        <div class="cardName">Comments</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
-                    </div>
-                </div>
-            </div> {% endcomment %}
