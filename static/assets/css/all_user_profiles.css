@@ -1,0 +1,29 @@
+/* UserProfile List Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--black2);
+  }
+  
+  th {
+    background-color: var(--blue);
+    color: var(--white);
+  }
+  
+  tr:hover {
+    background-color: var(--gray);
+  }
+  
+  /* Adjustments for responsiveness */
+  @media (max-width: 480px) {
+    th, td {
+      font-size: 14px;
+    }
+  }
+  

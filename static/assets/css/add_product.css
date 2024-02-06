@@ -1,0 +1,43 @@
+/* AddProduct Form Styles */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    color: var(--blue);
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--black2);
+  }
+  
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--black2);
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Adjustments for responsiveness */
+  @media (max-width: 480px) {
+    form {
+      padding: 0 20px;
+    }
+  }
+  
