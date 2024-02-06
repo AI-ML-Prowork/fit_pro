@@ -17,6 +17,20 @@ def base(request):
 
 
 
+# __________ NEW REQUIREMENTS_________#
+@login_required(login_url='signin/')
+def fitness_hra(request):
+    return render(request, 'user_panel/fitness_hra.html')
+
+
+
+
+
+
+
+#______________________________________#
+
+
 def signup(request):
 
     if request.user.is_authenticated:

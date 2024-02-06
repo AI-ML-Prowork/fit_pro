@@ -4,7 +4,11 @@ from .views import *
 app_name = "user_panel"
 
 urlpatterns = [
+    # __________ NEW REQUIREMENTS_________#
+    path('fitness_hra', fitness_hra, name='fitness_hra'),
 
+
+    #______________________________________#
     path('signup/', signup, name='signup'),
     path('signin/', signin, name='signin'),
     path('logout/', logout, name='logout'),

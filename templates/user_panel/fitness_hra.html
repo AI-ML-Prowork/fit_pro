@@ -1,0 +1,25 @@
+{% extends "user_base.html" %}
+
+{% block content %}
+    <h2>FITNESS HRA</h2>
+
+    <p style="color:blue;">{{ personalization.greeting }}{{ user.first_name }}</p>
+    <p style="color:blue;">Your Goal - {{ goal.name }}</p>
+    <p style="color:blue;">1 -- {{ goal.tips.0.tip }}</p>
+    <hr/>
+    <form method="#" action="#">
+        {% comment %} {% csrf_token %} {% endcomment %}
+        <p style="color:blue;">What is your height ?</p>
+        <input type="number" name="height" id="id_height" step="0.01" min="0" required />
+        <p style="color:blue;">What is your weight ?</p>
+        <input type="number" name="weight" id="id_weight" step="0.1" min="0" required />
+        <p style="color:blue;">What is your age ?</p>
+        <input type="number" name="age" id="id_age" min="0" required />
+        <p style="color:blue;">Male</p>
+        <input type="radio" name="gender" id="id_gender_0" value="M" required />
+        <p style="color:blue;">Female</p>
+        <input type="radio" name="gender" id="id_gender_1" value="F" required />
+        <input type="submit" value="Continue" />
+    </form>
+    <p style="color:blue;">cm/ft<br/>kg/lbs<br/>Years<br/>Other</p>
+{% endblock %}
