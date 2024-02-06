@@ -9,7 +9,7 @@ urlpatterns = [
     path('signin/', signin, name='signin'),
     path('logout/', logout, name='logout'),
     
-    path('', home, name='home'),
+    path('', base, name='base'),
     
     path('add_user_profile', add_user_profile, name='add_user_profile'),
 

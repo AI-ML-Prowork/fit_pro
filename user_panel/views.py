@@ -10,8 +10,8 @@ import os
 
 
 @login_required(login_url='signin/')
-def home(request):
-    return render(request, 'home.html')
+def base(request):
+    return render(request, 'base.html')
 
 
 
